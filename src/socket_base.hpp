@@ -231,6 +231,7 @@ namespace zmq
         //  bind, is available and compatible with the socket type.
         int check_protocol (const std::string &protocol_);
 
+		//  (inproc) 添加调用 connect 连接到 bind socket 后的 bind_pipe
         //  Register the pipe with this socket.
         void attach_pipe (zmq::pipe_t *pipe_, bool subscribe_to_all_ = false);
 
@@ -250,6 +251,7 @@ namespace zmq
         //  Socket's mailbox object.
         i_mailbox *mailbox;
 
+		//  (inproc) connect 后的 bind_pipe
         //  List of attached pipes.
         typedef array_t <pipe_t, 3> pipes_t;
         pipes_t pipes;
