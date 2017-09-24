@@ -182,6 +182,7 @@ namespace zmq
         //  Mailbox for zmq_ctx_term thread.
         mailbox_t term_mailbox;
 
+		//  string 为 inproc://<name> 中的 name 字符串 (bind 时使用, 所以是 map)
         //  List of inproc endpoints within this context.
         typedef std::map <std::string, endpoint_t> endpoints_t;
         endpoints_t endpoints;
