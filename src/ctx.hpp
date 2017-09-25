@@ -137,7 +137,7 @@ namespace zmq
 
         struct pending_connection_t
         {
-            endpoint_t endpoint;
+            endpoint_t endpoint;  // connect socket
             pipe_t* connect_pipe;
             pipe_t* bind_pipe;
         };
