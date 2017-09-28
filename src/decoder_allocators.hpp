@@ -128,6 +128,7 @@ namespace zmq
             return buf;
         }
 
+		// 调用 allocate 才会真正分配内存
         void resize (std::size_t new_size)
         {
             bufsize = new_size;
@@ -144,6 +145,12 @@ namespace zmq
         }
 
     private:
+
+//  分配的内存布局是 [atomic_counter_t] + max_counter*[content_t] + max_size
+//  最开头的 atomic_counter_t 是该内存块的引用计数器
+//  buf 指向起始位置
+//  msg_content 指向第一个 content_t
+//  max_size 为缓冲区最大大小
         unsigned char* buf;
         std::size_t bufsize;
         std::size_t max_size;

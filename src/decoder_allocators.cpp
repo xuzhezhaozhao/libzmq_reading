@@ -57,6 +57,7 @@ zmq::shared_message_memory_allocator::~shared_message_memory_allocator ()
     deallocate();
 }
 
+//  分配的内存布局是 [atomic_counter_t] + max_counter*[content_t] + max_size
 unsigned char* zmq::shared_message_memory_allocator::allocate ()
 {
     if (buf) {
