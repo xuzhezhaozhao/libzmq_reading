@@ -375,7 +375,7 @@ void zmq::stream_engine_t::out_event ()
         }
 
         outpos = NULL;
-        outsize = encoder->encode (&outpos, 0);
+        outsize = encoder->encode (&outpos, 0); // get buffer (xzz)
 
         while (outsize < (size_t) out_batch_size) {
             if ((this->*next_msg) (&tx_msg) == -1)

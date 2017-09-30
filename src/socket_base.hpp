@@ -252,6 +252,7 @@ namespace zmq
         i_mailbox *mailbox;
 
 		//  (inproc) connect 后的 bind_pipe
+		//  (tcp) session pipes
         //  List of attached pipes.
         typedef array_t <pipe_t, 3> pipes_t;
         pipes_t pipes;

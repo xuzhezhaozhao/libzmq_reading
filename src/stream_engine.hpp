@@ -173,10 +173,12 @@ namespace zmq
         unsigned int greeting_bytes_read;
 
         //  The session this engine is attached to.
+		//  once unplug, session will set to NULL (xzz)
         zmq::session_base_t *session;
 
         options_t options;
 
+		// (tcp) endpoint the socket connect to 
         // String representation of endpoint
         std::string endpoint;
 
@@ -184,8 +186,11 @@ namespace zmq
 
         int (stream_engine_t::*next_msg) (msg_t *msg_);
 
+		// in in_event(), call on the received msg (xzz)
+		// can push msg to session via this call (xzz)
         int (stream_engine_t::*process_msg) (msg_t *msg_);
 
+		// once plugged, io_error will be set to false (xzz)
         bool io_error;
 
         //  Indicates whether the engine is to inject a phantom

@@ -372,6 +372,8 @@ bool zmq::session_base_t::zap_enabled ()
     );
 }
 
+// tcp_connecter call send_attach() when connected
+// zmq socket and session will create bi-pipe connection
 void zmq::session_base_t::process_attach (i_engine *engine_)
 {
     zmq_assert (engine_ != NULL);

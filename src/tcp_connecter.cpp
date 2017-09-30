@@ -168,7 +168,7 @@ void zmq::tcp_connecter_t::timer_event (int id_)
     if (id_ == connect_timer_id) {
         connect_timer_started = false;
 
-        rm_fd (handle);
+        rm_fd (handle); // 还没连接上不用 poll
         handle_valid = false;
 
         close ();
@@ -176,7 +176,7 @@ void zmq::tcp_connecter_t::timer_event (int id_)
     }
     else if (id_ == reconnect_timer_id) {
         reconnect_timer_started = false;
-        start_connecting ();
+        start_connecting (); // 开始重连
     }
 }
 
@@ -186,6 +186,7 @@ void zmq::tcp_connecter_t::start_connecting ()
     const int rc = open ();
 
     //  Connect may succeed in synchronous manner.
+	//  unpv1 里面讲过，非阻塞式的 connent
     if (rc == 0) {
         handle = add_fd (s);
         handle_valid = true;
