@@ -1386,7 +1386,7 @@ void zmq::socket_base_t::process_stop ()
     ctx_terminated = true;
 }
 
-// session will send_bind()
+// 连接成功时 session will send_bind()
 // bi-pipe connection with session
 void zmq::socket_base_t::process_bind (pipe_t *pipe_)
 {

@@ -429,6 +429,8 @@ endif ()
 #-----------------------------------------------------------------------------
 # default to Release build
 
+set(CMAKE_BUILD_TYPE Debug)
+
 if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   # CMAKE_BUILD_TYPE is not used for multi-configuration generators like Visual Studio/XCode
   # which instead use CMAKE_CONFIGURATION_TYPES

@@ -86,6 +86,7 @@ zmq::tcp_connecter_t::~tcp_connecter_t ()
     zmq_assert (s == retired_fd);
 }
 
+// launch_child() 会执行 send_plug()
 void zmq::tcp_connecter_t::process_plug ()
 {
     if (delayed_start)
@@ -332,6 +333,7 @@ int zmq::tcp_connecter_t::open ()
             return -1;
     }
 
+	//  非阻塞式异步连接
     //  Connect to the remote peer.
     rc = ::connect (s, tcp_addr->addr (), tcp_addr->addrlen ());
 
