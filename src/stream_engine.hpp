@@ -188,6 +188,7 @@ namespace zmq
 
 		// in in_event(), call on the received msg (xzz)
 		// can push msg to session via this call (xzz)
+		// handshake时作为状态处理和转移函数, handshake 结束后为 push_msg_to_session
         int (stream_engine_t::*process_msg) (msg_t *msg_);
 
 		// once plugged, io_error will be set to false (xzz)
