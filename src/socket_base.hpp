@@ -196,7 +196,9 @@ namespace zmq
         void add_endpoint (const char *addr_, own_t *endpoint_, pipe_t *pipe);
 
         //  Map of open endpoints.
-		//  pipe_t 是与 own_t 通信的此端 pipe，ownt_t * 可以是 session_base_t *
+		//  (tcp) connect: ownt_t * 是 session_base_t *, pipe_t 是与 own_t 通信的此端 pipe
+		//  (tcp) bind: ownt_t * 是 tcp_listener_t *, pipe is NULL
+		//  (tcp/udp) bind 之后会添加相关信息，所以可以 bind 多个地址
         typedef std::pair <own_t *, pipe_t*> endpoint_pipe_t;
         typedef std::multimap <std::string, endpoint_pipe_t> endpoints_t;
         endpoints_t endpoints;
